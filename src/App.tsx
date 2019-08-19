@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import MainPage from "./pages/MainPage";
+import Skill from "./state/SkillContainer";
+import Exp from "./state/ExpContainer";
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Skill.Provider>
+        <Exp.Provider>
+          <MainPage />
+        </Exp.Provider>
+      </Skill.Provider>
     </div>
   );
-}
+};
 
 export default App;
