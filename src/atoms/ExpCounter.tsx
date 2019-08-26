@@ -1,5 +1,6 @@
 import React from "react";
 import { css } from "emotion";
+import { h3 } from "../style/variables";
 
 interface IPropsExpCounter {
   style: object;
@@ -10,8 +11,8 @@ const ExpCounter: React.FC<IPropsExpCounter> = props => {
 
   const ExpCounterStyle = css({
     ...{
-      height: 50,
-      fontSize: 20
+      fontSize: h3,
+      lineHeight: `${h3 * 0.5}px`
     },
     ...style
   });

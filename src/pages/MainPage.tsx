@@ -1,11 +1,13 @@
 import React from "react";
-import { Page } from "../layout/Style";
-import SkillDataGrid from "../organisms/SkillDataGrid";
+import MainIndex from "../templates/main";
+import { Page } from "../style";
+import Header from "../templates/header";
 
 const MainPage: React.FC = () => {
   return (
     <Page>
-      <SkillDataGrid />
+      <Header />
+      <MainIndex />
     </Page>
   );
 };

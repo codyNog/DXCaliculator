@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactDataGrid from "react-data-grid";
 import Skill from "../state/SkillContainer";
 import SkillController from "../molecules/SkillController";
+import { Section } from "../style";
+import DataGrid from "../molecules/DataGrid";
+import { marginM } from "../style/variables";
+import Heading from "../atoms/Heading";
 
 const columns = [
   { key: "name", name: "エフェクト", editable: true },
@@ -27,31 +31,23 @@ const SkillDataGrid = () => {
     skillExp
   } = skill;
   return (
-    <div>
-      <ReactDataGrid
+    <Section>
+      <Heading text={"エフェクト"} />
+      <DataGrid
         rowKey="name"
-        columns={columns}
-        rowGetter={i => skillData[i]}
-        rowsCount={skillData.length}
-        minHeight={400}
+        skillData={skillData}
         onGridRowsUpdated={onGridRowsUpdated}
-        enableCellSelect={true}
-        rowSelection={{
-          showCheckbox: true,
-          enableShiftSelect: true,
-          onRowsSelected: onRowsSelected,
-          onRowsDeselected: onRowsDeselected,
-          selectBy: {
-            indexes: selectedIndexes
-          }
-        }}
+        selectedIndexes={selectedIndexes}
+        onRowsSelected={onRowsSelected}
+        onRowsDeselected={onRowsDeselected}
+        margin={marginM}
       />
       <SkillController
         add={addSkillRow}
         remove={removeSkillRow}
         skillExp={skillExp}
       />
-    </div>
+    </Section>
   );
 };
 

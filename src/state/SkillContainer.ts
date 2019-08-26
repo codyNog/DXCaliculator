@@ -1,18 +1,7 @@
 import { useState } from "react";
 import { createContainer } from "unstated-next";
 import ReactDataGrid from "react-data-grid";
-
-interface SkillObject {
-  check: string;
-  name: string;
-  level: number;
-  cost: number;
-  limit: string;
-  critical: number;
-  dice: number;
-  fixed: number;
-  hp: number;
-}
+import { SkillObject } from "../interface";
 
 interface RowInterface {
   fromRow: number;
@@ -20,7 +9,7 @@ interface RowInterface {
   updated: { level: number };
 }
 
-const initialState = [
+const initialSkillData = [
   {
     check: "none",
     name: "ワーディング",
@@ -60,7 +49,7 @@ const addSkill = (i: number): SkillObject => {
 };
 
 const useSkill = () => {
-  const [skillData, setSkillData] = useState(initialState);
+  const [skillData, setSkillData] = useState(initialSkillData);
   const addSkillRow = () => {
     const key = skillData.length;
     const add = addSkill(key);
@@ -106,33 +95,23 @@ const useSkill = () => {
     setSkillExp(skillExp + gapSkillExp * 5);
   };
 
-  const [selectedIndexes, setSelectedIndexes] = useState([
-    {
-      check: "none",
-      name: "",
-      level: 1,
-      cost: 0,
-      limit: "--",
-      critical: 0,
-      dice: 0,
-      fixed: 0,
-      hp: 0
-    }
-  ]);
+  const initialIndex: number[] = [];
+  const [selectedIndexes, setSelectedIndexes] = useState(initialIndex);
 
   const onRowsSelected = (
     rows: ReactDataGrid.SelectionParams<SkillObject>[]
   ): void => {
-    setSelectedIndexes(selectedIndexes.concat(rows.map(r => r.row)));
+    const rowIndexes = rows.map(r => r.rowIdx);
+    setSelectedIndexes(selectedIndexes.concat(rowIndexes));
   };
 
   const onRowsDeselected = (
     rows: ReactDataGrid.SelectionParams<SkillObject>[]
   ): void => {
     const rowIndexes = rows.map(r => r.rowIdx);
-    /*  setSelectedIndexes(
-      selectedIndexes.filter((i:number) => rowIndexes.indexOf(i) === -1)
-    ); */
+    setSelectedIndexes(
+      selectedIndexes.filter(i => rowIndexes.indexOf(i) === -1)
+    );
   };
 
   const [skillExp, setSkillExp] = useState(30);
@@ -152,15 +131,3 @@ const useSkill = () => {
 const Skill = createContainer(useSkill);
 
 export default Skill;
-
-/* (rows: ReactDataGrid.SelectionParams<{
-  check: string;
-  name: string;
-  level: number;
-  cost: number;
-  limit: string;
-  critical: number;
-  dice: number;
-  fixed: number;
-  hp: number;
-}>[]) => void) */
