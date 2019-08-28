@@ -20,8 +20,8 @@ const SkillController: React.FC<IPropsSkillController> = props => {
   });
   return (
     <div className={ControllerStyle}>
-      <Button text={"+増やす"} onClick={add} margin={0} />
-      <Button text={"-減らす"} onClick={remove} margin={0} />
+      <Button text={"+増やす"} onClick={add} />
+      <Button text={"-減らす"} onClick={remove} />
       <ExpCounter style={{ right: marginM, position: "absolute" }}>
         {skillExp}
       </ExpCounter>

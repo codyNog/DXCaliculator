@@ -4,10 +4,11 @@ import Heading from "../atoms/Heading";
 import TextArea from "../atoms/TextArea";
 
 const ProfileArea: React.FC = () => {
+  const height = 100;
   return (
     <Section>
       <Heading text={"プロフィール"} />
-      <TextArea height={100} />
+      <TextArea style={{ height: height, minHeight: height }} />
     </Section>
   );
 };

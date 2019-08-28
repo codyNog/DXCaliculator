@@ -4,21 +4,23 @@ import { h2 } from "../style/variables";
 
 interface IPropsHeading {
   text: string;
-  margin?: number;
+  style?: object;
 }
 
 const Heading: React.FC<IPropsHeading> = props => {
-  const { text, margin } = props;
+  const { text, style } = props;
 
   const HeadingStyle = css({
     fontSize: h2,
-    marginBottom: margin,
     left: 0
   });
 
   const WrapperStyle = css({
-    height: 40,
-    width: 200
+    ...{
+      height: 40,
+      width: 200
+    },
+    ...style
   });
 
   return (

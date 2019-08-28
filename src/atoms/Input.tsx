@@ -5,15 +5,18 @@ import { placeholder } from "@babel/types";
 interface IPropsInput {
   type: string;
   value: string;
-  margin?: number;
+  style?: object;
   placeholder: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input: React.FC<IPropsInput> = props => {
-  const { type, value, margin, onChange, placeholder } = props;
+  const { type, value, style, onChange, placeholder } = props;
   const InputStyle = css({
-    width: 30
+    ...{
+      width: 30
+    },
+    ...style
   });
 
   return (

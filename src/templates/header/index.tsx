@@ -11,18 +11,18 @@ const HeaderStyle = css({
   justifyContent: "center"
 });
 
-const HeaderButtonStyle = css({
-  position: "fixed",
-  right: 20
-});
-
 const Header: React.FC = () => {
   return (
     <div className={HeaderStyle}>
       <div>header</div>
-      <div className={HeaderButtonStyle}>
-        <Button text={"保存する"} onClick={() => console.log("click")} />
-      </div>
+      <Button
+        text={"保存する"}
+        onClick={() => console.log("click")}
+        style={{
+          position: "absolute",
+          right: 20
+        }}
+      />
     </div>
   );
 };

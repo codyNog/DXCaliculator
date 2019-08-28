@@ -4,14 +4,12 @@ import { css } from "emotion";
 interface IPropsButtonType {
   text: string;
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  margin?: number;
+  style?: object;
 }
 
 const Button: React.FC<IPropsButtonType> = props => {
-  const { text, onClick, margin } = props;
-  const ButtonStyle = css({
-    marginBottom: margin
-  });
+  const { text, onClick, style } = props;
+  const ButtonStyle = css({ ...{}, ...style });
 
   return (
     <button type={"button"} className={ButtonStyle} onClick={onClick}>
