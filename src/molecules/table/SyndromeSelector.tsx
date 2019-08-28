@@ -4,18 +4,19 @@ import Selector from "../../atoms/Selector";
 
 interface IPropsSSelector {
   text: string;
+  value: string;
   options: string[];
   fourPoints: number[];
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 const SyndromeSelector: React.FC<IPropsSSelector> = props => {
-  const { text, options, fourPoints, onChange } = props;
+  const { text, value, options, fourPoints, onChange } = props;
   return (
     <tr>
       <th>{text}</th>
       <th>
-        <Selector options={options} onChange={onChange} />
+        <Selector value={value} options={options} onChange={onChange} />
       </th>
       {fourPoints.map(point => {
         return <td>{point}</td>;

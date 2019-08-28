@@ -6,11 +6,12 @@ interface IPropsSelector {
   options: string[];
   style?: object;
   width?: number;
+  value: number | string;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 const Selector: React.FC<IPropsSelector> = props => {
-  const { options, style, width, onChange } = props;
+  const { options, style, width, value, onChange } = props;
   const SelectorStyle = css({
     ...{
       textAlign: "center",
@@ -21,7 +22,7 @@ const Selector: React.FC<IPropsSelector> = props => {
     ...style
   });
   return (
-    <select className={SelectorStyle} onChange={onChange}>
+    <select className={SelectorStyle} value={value} onChange={onChange}>
       {options.map(option => {
         return <option value={option}>{option}</option>;
       })}

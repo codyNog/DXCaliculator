@@ -15,11 +15,7 @@ const InitialBonus: React.FC<IPropsSPoints> = props => {
     <tr>
       <th colSpan={2}>{text}</th>
       {fourPoints.map(point => {
-        return (
-          <td>
-            <Selector options={["1", "2", "3"]} onChange={onChange} />
-          </td>
-        );
+        return <td></td>;
       })}
     </tr>
   );

@@ -15,10 +15,15 @@ const StatusPoints: React.FC<IPropsSPoints> = props => {
   return (
     <tr>
       <th colSpan={2}>{text}</th>
-      {fourPoints.map(point => {
+      {fourPoints.map((point, i) => {
         return (
           <td>
-            <Selector options={options} onChange={onChange} />
+            <Selector
+              value={point}
+              key={i}
+              options={options}
+              onChange={onChange}
+            />
           </td>
         );
       })}
