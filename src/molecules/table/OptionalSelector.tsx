@@ -15,7 +15,12 @@ const OptionalSelector: React.FC<IPropsOSelector> = props => {
     <tr>
       <th>{text}</th>
       <th>
-        <Selector value={value} options={options} onChange={onChange} />
+        <Selector
+          key={"OPselector"}
+          value={value}
+          options={options}
+          onChange={onChange}
+        />
       </th>
     </tr>
   );

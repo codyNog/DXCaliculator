@@ -6,60 +6,23 @@ import Heading from "../atoms/Heading";
 import StatusPoints from "../molecules/table/StatusPoints";
 import OptionalSelector from "../molecules/table/OptionalSelector";
 import ResultPoints from "../molecules/table/ResultPoints";
+import State from "../state/StateContainer";
 
-const status = ["", "", "肉体", "感覚", "精神", "社会"];
+const rows = ["", "", "肉体", "感覚", "精神", "社会"];
+const syndromeKind = ["", "キュマイラ", "エンジェルハイロウ"];
 
-const kind = ["キュマイラ", "エンジェルハイロウ", ""];
-
-const works = ["小学生", "中学生", "高校生"];
-
-const fourPoints = [...Array(4)].map(() => 0);
-const fourPointsArray = [...Array(6)].map(() => fourPoints);
-
-const state = {
-  syndrome: [kind[0], kind[0], "--"],
-  statusPoint: [...Array(6)].map(() => fourPoints)
-};
-
-const syndromeStatus = (syndrome: string): number[] => {
-  switch (syndrome) {
-    case kind[0]:
-      return [3, 0, 0, 1];
-    case kind[1]:
-      return [0, 3, 1, 0];
-    default:
-      return [0, 0, 0, 0];
-  }
-};
+const worksKind = ["", "小学生", "中学生", "高校生"];
 
 const StatusTable: React.FC = () => {
-  const [status, setStatus] = useState(state)
-  const { syndrome, statusPoint } = status;
-
-  const changeSyndrome = (index:number, value: string) => {
-    const array = syndrome
-    array.splice(index, 1 , value)
-    return array
-  }
-
-  const changeStatusPoint = (index: number, value: number[]) => {
-    const array = statusPoint
-    array.splice(index, 1 , value)
-    return array
-  }
-
-
-  const onChangeSelector = (index: number, value: number[]) => {
-    const result ={
-      syndrome: changeSyndrome(index, value),
-      statusPoint: 
-    }
-  }
-
-/*   const onChangeStatus = (column:number,index: number, value: number[]) => {
-    statusPoint[column].splice(index, 1, value);
-    setStatus(statusPoint);
-  }; */
+  const state = State.useContainer();
+  const {
+    status,
+    onChangeSyndrome,
+    onChangeOptional,
+    optionalOption,
+    onChangeWorks
+  } = state;
+  const { syndrome, works, statusPoint } = status;
 
   return (
     <Section
@@ -70,18 +33,71 @@ const StatusTable: React.FC = () => {
       <Heading text={"ステータス"} />
       <table>
         <tbody>
-          <TableRow rows={status} />
+          <TableRow rows={rows} />
           <SyndromeSelector
+            key={"Sselector1"}
             value={syndrome[0]}
             text={"シンドローム1"}
-            options={kind}
+            options={syndromeKind}
             fourPoints={statusPoint[0]}
             onChange={e => {
               const { value } = e.currentTarget;
-              onChangeStatus(0, syndromeStatus(value));
+              onChangeSyndrome(0, value);
             }}
           />
-        
+          <SyndromeSelector
+            key={"Sselector2"}
+            value={syndrome[1]}
+            text={"シンドローム2"}
+            options={syndromeKind}
+            fourPoints={statusPoint[1]}
+            onChange={e => {
+              const { value } = e.currentTarget;
+              onChangeSyndrome(1, value);
+            }}
+          />
+          <OptionalSelector
+            value={syndrome[2]}
+            text={"オプショナル"}
+            options={optionalOption()}
+            onChange={e => {
+              const { value } = e.currentTarget;
+              onChangeOptional(2, value);
+            }}
+          />
+          <SyndromeSelector
+            key={"Sselector3"}
+            value={works}
+            text={"ワークス"}
+            options={worksKind}
+            fourPoints={statusPoint[2]}
+            onChange={e => {
+              const { value } = e.currentTarget;
+              onChangeWorks(2, value);
+            }}
+          />
+          <StatusPoints
+            options={[...Array(4)].map((v, i) => String(i))}
+            text={"初期修正"}
+            fourPoints={statusPoint[3]}
+            onChange={e => {
+              console.log(e);
+              /* const { value } = e.currentTarget;
+  onChangeInitBonus(3, value); */
+            }}
+          />
+          <StatusPoints
+            options={[...Array(21)].map((v, i) => String(i))}
+            text={"成長修正"}
+            fourPoints={statusPoint[4]}
+            onChange={e => console.log(e.currentTarget.value)}
+          />
+          <StatusPoints
+            options={[...Array(21)].map((v, i) => String(i))}
+            text={"その他修正"}
+            fourPoints={statusPoint[5]}
+            onChange={e => console.log(e.currentTarget.value)}
+          />
         </tbody>
       </table>
     </Section>
@@ -90,14 +106,7 @@ const StatusTable: React.FC = () => {
 
 export default StatusTable;
 
-
-/* <SyndromeSelector
-value={syndrome[1]}
-text={"シンドローム2"}
-options={kind}
-fourPoints={statusPoint[1]}
-onChange={e => console.log(e.currentTarget.value)}
-/>
+/* 
 <OptionalSelector
 value={syndrome[2]}
 text={"オプショナル"}

@@ -18,8 +18,8 @@ const SyndromeSelector: React.FC<IPropsSSelector> = props => {
       <th>
         <Selector value={value} options={options} onChange={onChange} />
       </th>
-      {fourPoints.map(point => {
-        return <td>{point}</td>;
+      {fourPoints.map((point, i) => {
+        return <td key={i}>{point}</td>;
       })}
     </tr>
   );

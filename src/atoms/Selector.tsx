@@ -23,8 +23,12 @@ const Selector: React.FC<IPropsSelector> = props => {
   });
   return (
     <select className={SelectorStyle} value={value} onChange={onChange}>
-      {options.map(option => {
-        return <option value={option}>{option}</option>;
+      {options.map((option, i) => {
+        return (
+          <option key={`option${i}`} value={option}>
+            {option}
+          </option>
+        );
       })}
     </select>
   );

@@ -1,25 +1,13 @@
 import React from "react";
-import ReactDataGrid from "react-data-grid";
-import Skill from "../state/SkillContainer";
 import SkillController from "../molecules/SkillController";
 import { Section } from "../style";
 import DataGrid from "../molecules/DataGrid";
 import { marginM } from "../style/variables";
 import Heading from "../atoms/Heading";
-
-const columns = [
-  { key: "name", name: "エフェクト", editable: true },
-  { key: "level", name: "レベル", editable: true },
-  { key: "cost", name: "コスト", editable: true },
-  { key: "limit", name: "制限", editable: true },
-  { key: "critical", name: "C値", editable: true },
-  { key: "dice", name: "ダイス増減", editable: true },
-  { key: "fixed", name: "修正値増減", editable: true },
-  { key: "hp", name: "HP増減", editable: true }
-];
+import State from "../state/StateContainer";
 
 const SkillDataGrid = () => {
-  const skill = Skill.useContainer();
+  const state = State.useContainer();
   const {
     skillData,
     addSkillRow,
@@ -29,7 +17,7 @@ const SkillDataGrid = () => {
     onRowsSelected,
     onRowsDeselected,
     skillExp
-  } = skill;
+  } = state;
   return (
     <Section>
       <Heading text={"エフェクト"} />

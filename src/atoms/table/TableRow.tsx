@@ -8,8 +8,8 @@ const TableRow: React.FC<IPropsTableRow> = props => {
   const { rows } = props;
   return (
     <tr>
-      {rows.map(row => {
-        return <th>{row}</th>;
+      {rows.map((row, i) => {
+        return <th key={`tr${i}`}>{row}</th>;
       })}
     </tr>
   );
