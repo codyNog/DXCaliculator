@@ -3,10 +3,11 @@ import { h3, marginXS } from "../style/variables";
 
 interface IPropsTextArea {
   style: object;
+  onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 const TextArea: React.FC<IPropsTextArea> = props => {
-  const { style } = props;
+  const { style, onChange } = props;
   return (
     <textarea
       style={{
@@ -18,6 +19,7 @@ const TextArea: React.FC<IPropsTextArea> = props => {
         },
         ...style
       }}
+      onChange={onChange}
     ></textarea>
   );
 };

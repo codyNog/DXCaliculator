@@ -4,10 +4,10 @@ import { Section } from "../style";
 import DataGrid from "../molecules/DataGrid";
 import { marginM } from "../style/variables";
 import Heading from "../atoms/Heading";
-import State from "../state/StateContainer";
+import Skill from "../state/container/SkillContainer";
 
 const SkillDataGrid = () => {
-  const state = State.useContainer();
+  const skill = Skill.useContainer();
   const {
     skillData,
     addSkillRow,
@@ -17,7 +17,7 @@ const SkillDataGrid = () => {
     onRowsSelected,
     onRowsDeselected,
     skillExp
-  } = state;
+  } = skill;
   return (
     <Section>
       <Heading text={"エフェクト"} />

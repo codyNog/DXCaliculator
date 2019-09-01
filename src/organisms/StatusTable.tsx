@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { Section } from "../style";
 import TableRow from "../atoms/table/TableRow";
 import SyndromeSelector from "../molecules/table/SyndromeSelector";
 import Heading from "../atoms/Heading";
 import StatusPoints from "../molecules/table/StatusPoints";
 import OptionalSelector from "../molecules/table/OptionalSelector";
-import ResultPoints from "../molecules/table/ResultPoints";
-import State from "../state/StateContainer";
+import Status from "../state/container/StatusContainer";
+import TotalRow from "../molecules/table/TotalRow";
+import ExpCounter from "../atoms/ExpCounter";
+import { marginM } from "../style/variables";
+import StatusController from "../molecules/table/StatusController";
 
 const rows = ["", "", "肉体", "感覚", "精神", "社会"];
 const syndromeKind = ["", "キュマイラ", "エンジェルハイロウ"];
@@ -14,130 +17,99 @@ const syndromeKind = ["", "キュマイラ", "エンジェルハイロウ"];
 const worksKind = ["", "小学生", "中学生", "高校生"];
 
 const StatusTable: React.FC = () => {
-  const state = State.useContainer();
+  const status = Status.useContainer();
   const {
-    status,
-    onChangeSyndrome,
-    onChangeOptional,
+    syndromeOne,
+    syndromeTwo,
+    syndromeThree,
+    works,
+    onChangeSyndromeOne,
+    onChangeSyndromeTwo,
+    setSyndromeThree,
     optionalOption,
-    onChangeWorks
-  } = state;
-  const { syndrome, works, statusPoint } = status;
+    onChangeWorks,
+    total,
+    exp
+  } = status;
 
   return (
     <Section
       style={{
-        border: "solid 1px black "
+        border: "solid 1px black ",
+        position: "relative",
+        display: "flex"
       }}
     >
       <Heading text={"ステータス"} />
-      <table>
+      <table style={{ marginBottom: marginM }}>
         <tbody>
           <TableRow rows={rows} />
           <SyndromeSelector
             key={"Sselector1"}
-            value={syndrome[0]}
+            value={syndromeOne.syndrome}
             text={"シンドローム1"}
             options={syndromeKind}
-            fourPoints={statusPoint[0]}
+            fourPoints={syndromeOne.statusPoint}
             onChange={e => {
               const { value } = e.currentTarget;
-              onChangeSyndrome(0, value);
+              onChangeSyndromeOne(value);
             }}
           />
           <SyndromeSelector
             key={"Sselector2"}
-            value={syndrome[1]}
+            value={syndromeTwo.syndrome}
             text={"シンドローム2"}
             options={syndromeKind}
-            fourPoints={statusPoint[1]}
+            fourPoints={syndromeTwo.statusPoint}
             onChange={e => {
               const { value } = e.currentTarget;
-              onChangeSyndrome(1, value);
+              onChangeSyndromeTwo(value);
             }}
           />
           <OptionalSelector
-            value={syndrome[2]}
+            value={syndromeThree}
             text={"オプショナル"}
             options={optionalOption()}
             onChange={e => {
               const { value } = e.currentTarget;
-              onChangeOptional(2, value);
+              setSyndromeThree(value);
             }}
           />
           <SyndromeSelector
             key={"Sselector3"}
-            value={works}
+            value={works.works}
             text={"ワークス"}
             options={worksKind}
-            fourPoints={statusPoint[2]}
+            fourPoints={works.statusPoint}
             onChange={e => {
               const { value } = e.currentTarget;
-              onChangeWorks(2, value);
+              onChangeWorks(value);
             }}
           />
           <StatusPoints
+            role={"initial"}
             options={[...Array(4)].map((v, i) => String(i))}
             text={"初期修正"}
-            fourPoints={statusPoint[3]}
-            onChange={e => {
-              console.log(e);
-              /* const { value } = e.currentTarget;
-  onChangeInitBonus(3, value); */
-            }}
+            id={3}
           />
           <StatusPoints
+            role={"growth"}
             options={[...Array(21)].map((v, i) => String(i))}
             text={"成長修正"}
-            fourPoints={statusPoint[4]}
-            onChange={e => console.log(e.currentTarget.value)}
+            id={4}
           />
           <StatusPoints
+            role={"others"}
             options={[...Array(21)].map((v, i) => String(i))}
             text={"その他修正"}
-            fourPoints={statusPoint[5]}
-            onChange={e => console.log(e.currentTarget.value)}
+            id={5}
           />
+          <TotalRow text={"合計値"} fourPoints={total} />
         </tbody>
       </table>
+      <StatusController exp={exp} />
     </Section>
   );
 };
 
 export default StatusTable;
-
-/* 
-<OptionalSelector
-value={syndrome[2]}
-text={"オプショナル"}
-options={kind}
-onChange={e => console.log(e.currentTarget.value)}
-/>
-<SyndromeSelector
-value={"--"}
-text={"ワークス"}
-options={works}
-fourPoints={statusPoint[2]}
-onChange={e => console.log(e.currentTarget.value)}
-/>
-<StatusPoints
-options={[...Array(4)].map((v, i) => String(i))}
-text={"初期修正"}
-fourPoints={statusPoint[3]}
-onChange={e =>
-  onChangeStatus(4, [Number(e.currentTarget.value), 0, 0, 0])
-}
-/>
-<StatusPoints
-options={[...Array(21)].map((v, i) => String(i))}
-text={"成長修正"}
-fourPoints={statusPoint[4]}
-onChange={e => console.log(e.currentTarget.value)}
-/>
-<StatusPoints
-options={[...Array(21)].map((v, i) => String(i))}
-text={"その他修正"}
-fourPoints={statusPoint[5]}
-onChange={e => console.log(e.currentTarget.value)}
-/>
-<ResultPoints text={"合計"} fourPoints={fourPoints} /> */

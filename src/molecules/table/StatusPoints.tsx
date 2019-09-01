@@ -1,32 +1,35 @@
 import React from "react";
 import { css } from "emotion";
 import Selector from "../../atoms/Selector";
-import Input from "../../atoms/Input";
-import State from "../../state/StateContainer";
+import Status from "../../state/container/StatusContainer";
 
 interface IPropsSPoints {
+  role: string;
   text: string;
-  fourPoints: number[];
-  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   options: string[];
+  id: number;
 }
 
+const array = [0, 0, 0, 0];
+
 const StatusPoints: React.FC<IPropsSPoints> = props => {
-  const { text, fourPoints, onChange, options } = props;
-  const state = State.useContainer();
-  const { onChangeInitBonus } = state;
+  const { role, text, id, options } = props;
+  const status = Status.useContainer();
+  const { statusPointsClassify } = status;
+  const { value, onChange } = statusPointsClassify(role);
+
   return (
     <tr>
       <th colSpan={2}>{text}</th>
-      {fourPoints.map((point, i) => {
+      {array.map((point, i) => {
         return (
-          <td key={`SPselector${i}`}>
+          <td key={`${role}${i}`}>
             <Selector
-              value={point}
+              value={value[i]}
               options={options}
               onChange={e => {
                 const { value } = e.currentTarget;
-                onChangeInitBonus(3, value, i);
+                onChange(i, value);
               }}
             />
           </td>

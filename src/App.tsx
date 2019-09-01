@@ -1,13 +1,12 @@
 import React from "react";
-import "./App.css";
-import MainPage from "./pages/MainPage";
-import State from "./state/StateContainer";
+import Providers from "./state/Providers";
+import Routing from "./route/Routing";
 
 const App: React.FC = () => {
   return (
-    <State.Provider>
-      <MainPage />
-    </State.Provider>
+    <Providers>
+      <Routing />
+    </Providers>
   );
 };
 

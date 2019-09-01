@@ -4,10 +4,11 @@ import { h3 } from "../style/variables";
 
 interface IPropsExpCounter {
   style: object;
+  exp: number;
 }
 
 const ExpCounter: React.FC<IPropsExpCounter> = props => {
-  const { style, children } = props;
+  const { style, exp } = props;
 
   const ExpCounterStyle = css({
     ...{
@@ -17,7 +18,7 @@ const ExpCounter: React.FC<IPropsExpCounter> = props => {
     ...style
   });
 
-  return <div className={ExpCounterStyle}>EXP合計 {children}</div>;
+  return <div className={ExpCounterStyle}>EXP合計 {exp}</div>;
 };
 
 export default ExpCounter;
