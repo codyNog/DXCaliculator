@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "../../atoms/Button";
 import { css } from "emotion";
 import ExpCounter from "../../atoms/ExpCounter";
 import { marginM } from "../../style/variables";

@@ -51,7 +51,7 @@ const useStatus = () => {
   const [initial, setInitial] = useState([0, 0, 0, 0]);
   const [growth, setGrowth] = useState([0, 0, 0, 0]);
   const [others, setOthers] = useState([0, 0, 0, 0]);
-  const [exp, setExp] = useState(0);
+  const [statusExp, setExp] = useState(0);
 
   const onChangeSyndromeOne = (value: string) => {
     const statusPoint = syndromeStatus(value);
@@ -155,6 +155,13 @@ const useStatus = () => {
   };
 
   const total = [totalCalc(0), totalCalc(1), totalCalc(2), totalCalc(3)];
+  const abilityValue = (): number[] => {
+    const hp = 20 + total[0] * 2 + total[2];
+    const erosion = 22;
+    const initiative = total[1] * 2 + total[2];
+    const move = initiative + 5;
+    return [hp, erosion, initiative, move];
+  };
 
   return {
     syndromeOne,
@@ -169,7 +176,8 @@ const useStatus = () => {
     optionalOption,
     statusPointsClassify,
     total,
-    exp
+    abilityValue,
+    statusExp
   };
 };
 

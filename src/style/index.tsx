@@ -2,12 +2,6 @@ import React from "react";
 import { css } from "emotion";
 import { marginM } from "./variables";
 
-/* const Page: React.FC = props => {
-  const { children } = props;
-  return <div>{children}</div>;
-};
- */
-
 const Page: React.FC = props => {
   const { children } = props;
   const PageStyle = css({

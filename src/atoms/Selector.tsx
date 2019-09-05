@@ -15,7 +15,7 @@ const Selector: React.FC<IPropsSelector> = props => {
   const SelectorStyle = css({
     ...{
       textAlign: "center",
-      width: width ? width : 100,
+      width: width ? width : 180,
       height: 30,
       fontSize: h3
     },

@@ -7,14 +7,15 @@ import StatusPoints from "../molecules/table/StatusPoints";
 import OptionalSelector from "../molecules/table/OptionalSelector";
 import Status from "../state/container/StatusContainer";
 import TotalRow from "../molecules/table/TotalRow";
-import ExpCounter from "../atoms/ExpCounter";
 import { marginM } from "../style/variables";
 import StatusController from "../molecules/table/StatusController";
+import AbilityValue from "../molecules/table/AbilityValue";
 
 const rows = ["", "", "肉体", "感覚", "精神", "社会"];
 const syndromeKind = ["", "キュマイラ", "エンジェルハイロウ"];
 
 const worksKind = ["", "小学生", "中学生", "高校生"];
+const ability = ["", "", "HP", "侵蝕値", "行動値", "移動"];
 
 const StatusTable: React.FC = () => {
   const status = Status.useContainer();
@@ -29,7 +30,8 @@ const StatusTable: React.FC = () => {
     optionalOption,
     onChangeWorks,
     total,
-    exp
+    abilityValue,
+    statusExp
   } = status;
 
   return (
@@ -105,9 +107,11 @@ const StatusTable: React.FC = () => {
             id={5}
           />
           <TotalRow text={"合計値"} fourPoints={total} />
+          <TableRow rows={ability} />
+          <AbilityValue fourPoints={abilityValue()} />
         </tbody>
       </table>
-      <StatusController exp={exp} />
+      <StatusController exp={statusExp} />
     </Section>
   );
 };
