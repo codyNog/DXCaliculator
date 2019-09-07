@@ -4,7 +4,7 @@ import Heading from "../atoms/Heading";
 import TextArea from "../atoms/TextArea";
 import Profile from "../state/container/ProfileContainer";
 
-const ProfileArea: React.FC = () => {
+const Area: React.FC = () => {
   const profile = Profile.useContainer();
   const { onChangeProfile } = profile;
   const height = 100;
@@ -19,6 +19,14 @@ const ProfileArea: React.FC = () => {
         }}
       />
     </Section>
+  );
+};
+
+const ProfileArea: React.FC = () => {
+  return (
+    <Profile.Provider>
+      <Area />
+    </Profile.Provider>
   );
 };
 

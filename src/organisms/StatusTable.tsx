@@ -17,7 +17,7 @@ const syndromeKind = ["", "キュマイラ", "エンジェルハイロウ"];
 const worksKind = ["", "小学生", "中学生", "高校生"];
 const ability = ["", "", "HP", "侵蝕値", "行動値", "移動"];
 
-const StatusTable: React.FC = () => {
+const Table: React.FC = () => {
   const status = Status.useContainer();
   const {
     syndromeOne,
@@ -113,6 +113,14 @@ const StatusTable: React.FC = () => {
       </table>
       <StatusController exp={statusExp} />
     </Section>
+  );
+};
+
+const StatusTable: React.FC = () => {
+  return (
+    <Status.Provider>
+      <Table />
+    </Status.Provider>
   );
 };
 

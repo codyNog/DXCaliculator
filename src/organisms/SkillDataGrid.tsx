@@ -6,7 +6,7 @@ import { marginM } from "../style/variables";
 import Heading from "../atoms/Heading";
 import Skill from "../state/container/SkillContainer";
 
-const SkillDataGrid = () => {
+const Grid = () => {
   const skill = Skill.useContainer();
   const {
     skillData,
@@ -36,6 +36,14 @@ const SkillDataGrid = () => {
         skillExp={skillExp}
       />
     </Section>
+  );
+};
+
+const SkillDataGrid: React.FC = () => {
+  return (
+    <Skill.Provider>
+      <Grid />
+    </Skill.Provider>
   );
 };
 
