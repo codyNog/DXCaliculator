@@ -1,6 +1,7 @@
 import React from "react";
 import SkillDataGrid from "../../organisms/SkillDataGrid";
 import StatusTable from "../../organisms/StatusTable";
+import SkillTable from "../../organisms/SkillTable";
 import ProfileArea from "../../organisms/ProfileArea";
 
 const MainIndex: React.FC = () => {
@@ -8,6 +9,7 @@ const MainIndex: React.FC = () => {
     <div>
       <StatusTable />
       <SkillDataGrid />
+      <SkillTable />
       <ProfileArea />
     </div>
   );

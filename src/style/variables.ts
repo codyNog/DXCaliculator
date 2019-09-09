@@ -1,5 +1,5 @@
 // margin
-const marginL = 30;
+const marginL = 36;
 const marginM = 24;
 const marginS = 20;
 const marginXS = 16;
@@ -11,4 +11,4 @@ const h4 = 10;
 // color
 const primaryColor = "";
 
-export { marginL, marginM, marginS, marginXS, h1, h2, h3, h4 };
+export { marginL, marginM, marginS, marginXS, h1, h2, h3, h4, primaryColor };

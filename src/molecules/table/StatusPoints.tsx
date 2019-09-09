@@ -1,5 +1,4 @@
 import React from "react";
-import { css } from "emotion";
 import Selector from "../../atoms/Selector";
 import Status from "../../state/container/StatusContainer";
 
@@ -7,13 +6,12 @@ interface IPropsSPoints {
   role: string;
   text: string;
   options: string[];
-  id: number;
 }
 
 const array = [0, 0, 0, 0];
 
 const StatusPoints: React.FC<IPropsSPoints> = props => {
-  const { role, text, id, options } = props;
+  const { role, text, options } = props;
   const status = Status.useContainer();
   const { statusPointsClassify } = status;
   const { value, onChange } = statusPointsClassify(role);
@@ -25,6 +23,7 @@ const StatusPoints: React.FC<IPropsSPoints> = props => {
         return (
           <td key={`${role}${i}`}>
             <Selector
+              style={{ width: 100 }}
               value={value[i]}
               options={options}
               onChange={e => {

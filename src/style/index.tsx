@@ -2,6 +2,10 @@ import React from "react";
 import { css } from "emotion";
 import { marginM } from "./variables";
 
+interface IPropsStyle {
+  style?: object;
+}
+
 const Page: React.FC = props => {
   const { children } = props;
   const PageStyle = css({
@@ -18,11 +22,7 @@ const Wrapper: React.FC = props => {
   return <div className={WrapperStyle}>{children}</div>;
 };
 
-interface IPropsSection {
-  style?: object;
-}
-
-const Section: React.FC<IPropsSection> = props => {
+const Section: React.FC<IPropsStyle> = props => {
   const { children, style } = props;
   const SectionStyle = css({
     ...{
@@ -36,6 +36,21 @@ const Section: React.FC<IPropsSection> = props => {
   return <section className={SectionStyle}>{children}</section>;
 };
 
+const Table: React.FC<IPropsStyle> = props => {
+  const { children, style } = props;
+  const TableStyle = css({
+    ...{
+      marginBottom: marginM
+    },
+    ...style
+  });
+  return (
+    <table className={TableStyle}>
+      <tbody>{children}</tbody>
+    </table>
+  );
+};
+
 interface IPropsMargin {
   margin: number;
 }
@@ -46,4 +61,4 @@ const MarginProps: React.FC<IPropsMargin> = props => {
   return <section className={SectionStyle}>{children}</section>;
 };
 
-export { Page, Wrapper, Section, MarginProps };
+export { Page, Wrapper, Section, Table, MarginProps };

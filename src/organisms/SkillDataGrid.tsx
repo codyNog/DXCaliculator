@@ -4,14 +4,14 @@ import { Section } from "../style";
 import DataGrid from "../molecules/DataGrid";
 import { marginM } from "../style/variables";
 import Heading from "../atoms/Heading";
-import Skill from "../state/container/SkillContainer";
+import Effect from "../state/container/EffectContainer";
 
 const Grid = () => {
-  const skill = Skill.useContainer();
+  const skill = Effect.useContainer();
   const {
-    skillData,
-    addSkillRow,
-    removeSkillRow,
+    effectData,
+    addEffectRow,
+    removeEffectRow,
     onGridRowsUpdated,
     selectedIndexes,
     onRowsSelected,
@@ -23,7 +23,7 @@ const Grid = () => {
       <Heading text={"エフェクト"} />
       <DataGrid
         rowKey="name"
-        skillData={skillData}
+        effectData={effectData}
         onGridRowsUpdated={onGridRowsUpdated}
         selectedIndexes={selectedIndexes}
         onRowsSelected={onRowsSelected}
@@ -31,8 +31,8 @@ const Grid = () => {
         margin={marginM}
       />
       <SkillController
-        add={addSkillRow}
-        remove={removeSkillRow}
+        add={addEffectRow}
+        remove={removeEffectRow}
         skillExp={skillExp}
       />
     </Section>
@@ -41,9 +41,9 @@ const Grid = () => {
 
 const SkillDataGrid: React.FC = () => {
   return (
-    <Skill.Provider>
+    <Effect.Provider>
       <Grid />
-    </Skill.Provider>
+    </Effect.Provider>
   );
 };
 

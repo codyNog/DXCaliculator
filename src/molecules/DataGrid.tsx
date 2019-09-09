@@ -4,7 +4,7 @@ import { SkillObject, RowInterface } from "../interface";
 
 interface IPropsDataGrid {
   rowKey: string;
-  skillData: SkillObject[];
+  effectData: SkillObject[];
   onGridRowsUpdated: ({ fromRow, toRow, updated }: RowInterface) => void;
   selectedIndexes: number[];
   onRowsSelected: (rows: ReactDataGrid.SelectionParams<SkillObject>[]) => void;
@@ -28,7 +28,7 @@ const columns = [
 const DataGrid: React.FC<IPropsDataGrid> = props => {
   const {
     rowKey,
-    skillData,
+    effectData,
     onGridRowsUpdated,
     selectedIndexes,
     onRowsSelected,
@@ -40,8 +40,8 @@ const DataGrid: React.FC<IPropsDataGrid> = props => {
       <ReactDataGrid
         rowKey={rowKey}
         columns={columns}
-        rowGetter={i => skillData[i]}
-        rowsCount={skillData.length}
+        rowGetter={i => effectData[i]}
+        rowsCount={effectData.length}
         minHeight={400}
         onGridRowsUpdated={onGridRowsUpdated}
         enableCellSelect={true}

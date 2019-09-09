@@ -1,57 +1,25 @@
 import { useState } from "react";
 import { createContainer } from "unstated-next";
-
-const syndromeKind = ["", "キュマイラ", "エンジェルハイロウ"];
-
-const worksKind = ["", "小学生", "中学生", "高校生"];
-
-const syndromeColumn = {
-  syndrome: "",
-  statusPoint: [0, 0, 0, 0]
-};
-
-const worksColumn = {
-  works: "",
-  statusPoint: [0, 0, 0, 0],
-  skillFixed: [0, 0]
-};
-
-const syndromeStatus = (syndrome: string): number[] => {
-  switch (syndrome) {
-    case syndromeKind[1]:
-      return [3, 0, 0, 1];
-    case syndromeKind[2]:
-      return [0, 3, 1, 0];
-    default:
-      return [0, 0, 0, 0];
-  }
-};
-
-interface worksStatusInterface {
-  statusPoint: number[];
-  skillFixed: number[];
-}
-
-const worksStatus = (works: string): worksStatusInterface => {
-  switch (works) {
-    case worksKind[1]:
-      return { statusPoint: [3, 0, 0, 1], skillFixed: [1] };
-    case worksKind[2]:
-      return { statusPoint: [3, 0, 0, 1], skillFixed: [1] };
-    default:
-      return { statusPoint: [0, 0, 0, 0], skillFixed: [0] };
-  }
-};
+import { syndromeKind, syndromeColumn, worksColumn } from "../variables";
+import {
+  worksStatus,
+  syndromeStatus,
+  awakenErosion,
+  urgeErosion
+} from "../utility";
 
 const useStatus = () => {
   const [syndromeOne, setSyndromeOne] = useState(syndromeColumn);
   const [syndromeTwo, setSyndromeTwo] = useState(syndromeColumn);
   const [syndromeThree, setSyndromeThree] = useState("");
+  const [awaken, setAwaken] = useState("");
+  const [urge, setUrge] = useState("");
   const [works, setWorks] = useState(worksColumn);
   const [initial, setInitial] = useState([0, 0, 0, 0]);
   const [growth, setGrowth] = useState([0, 0, 0, 0]);
   const [others, setOthers] = useState([0, 0, 0, 0]);
   const [statusExp, setExp] = useState(0);
+  const [skill, setSkill] = useState([{}]);
 
   const onChangeSyndromeOne = (value: string) => {
     const statusPoint = syndromeStatus(value);
@@ -100,9 +68,9 @@ const useStatus = () => {
     const { statusPoint, skillFixed } = worksStatus(value);
     setWorks({
       works: value,
-      statusPoint,
-      skillFixed
+      statusPoint
     });
+    setSkill(skillFixed);
   };
 
   const onChangeStatusPoint = (
@@ -157,7 +125,7 @@ const useStatus = () => {
   const total = [totalCalc(0), totalCalc(1), totalCalc(2), totalCalc(3)];
   const abilityValue = (): number[] => {
     const hp = 20 + total[0] * 2 + total[2];
-    const erosion = 22;
+    const erosion = awakenErosion(awaken) + urgeErosion(urge);
     const initiative = total[1] * 2 + total[2];
     const move = initiative + 5;
     return [hp, erosion, initiative, move];
@@ -167,11 +135,16 @@ const useStatus = () => {
     syndromeOne,
     syndromeTwo,
     syndromeThree,
+    awaken,
+    urge,
     works,
     initial,
+    skill,
     onChangeSyndromeOne,
     onChangeSyndromeTwo,
     setSyndromeThree,
+    setAwaken,
+    setUrge,
     onChangeWorks,
     optionalOption,
     statusPointsClassify,

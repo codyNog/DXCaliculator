@@ -43,18 +43,18 @@ const addSkill = (i: number): SkillObject => {
 };
 
 const useSkill = () => {
-  const [skillData, setSkillData] = useState(initialSkillData);
-  const addSkillRow = () => {
-    const key = skillData.length;
+  const [effectData, setSkillData] = useState(initialSkillData);
+  const addEffectRow = () => {
+    const key = effectData.length;
     const add = addSkill(key);
-    setSkillData(skillData.concat(add));
+    setSkillData(effectData.concat(add));
     setSkillExp(skillExp + 15);
   };
-  const removeSkillRow = (): void => {
-    const dataLength = skillData.length;
-    const lastData = skillData[dataLength - 1];
+  const removeEffectRow = (): void => {
+    const dataLength = effectData.length;
+    const lastData = effectData[dataLength - 1];
     if (dataLength > 2) {
-      const newSkillData = skillData.slice(0, skillData.length - 1);
+      const newSkillData = effectData.slice(0, effectData.length - 1);
       let minusSkillExp = 0;
       for (let i = lastData.level; i--; i < 2) {
         minusSkillExp += 5;
@@ -68,7 +68,7 @@ const useSkill = () => {
     toRow,
     updated
   }: RowInterface): SkillObject[] => {
-    const rows = skillData.slice();
+    const rows = effectData.slice();
     for (let i = fromRow; i <= toRow; i++) {
       rows[i] = { ...rows[i], ...updated };
     }
@@ -81,8 +81,8 @@ const useSkill = () => {
   }: RowInterface): void => {
     let gapSkillExp = 0;
     if ("level" in updated) {
-      if (!isNaN(updated.level) && !isNaN(skillData[fromRow].level))
-        gapSkillExp = updated.level - skillData[fromRow].level;
+      if (!isNaN(updated.level) && !isNaN(effectData[fromRow].level))
+        gapSkillExp = updated.level - effectData[fromRow].level;
     }
     const newState = updateRows({ fromRow, toRow, updated });
     setSkillData(newState);
@@ -111,9 +111,9 @@ const useSkill = () => {
   const [skillExp, setSkillExp] = useState(30);
 
   return {
-    skillData,
-    addSkillRow,
-    removeSkillRow,
+    effectData,
+    addEffectRow,
+    removeEffectRow,
     onGridRowsUpdated,
     selectedIndexes,
     onRowsSelected,
@@ -122,6 +122,6 @@ const useSkill = () => {
   };
 };
 
-const Skill = createContainer(useSkill);
+const Effect = createContainer(useSkill);
 
-export default Skill;
+export default Effect;
