@@ -19,7 +19,7 @@ const useStatus = () => {
   const [growth, setGrowth] = useState([0, 0, 0, 0]);
   const [others, setOthers] = useState([0, 0, 0, 0]);
   const [statusExp, setExp] = useState(0);
-  const [skill, setSkill] = useState([{}]);
+  const [skill, setSkill] = useState([{ name: "", value: 0 }]);
 
   const onChangeSyndromeOne = (value: string) => {
     const statusPoint = syndromeStatus(value);
@@ -66,11 +66,12 @@ const useStatus = () => {
 
   const onChangeWorks = (value: string) => {
     const { statusPoint, skillFixed } = worksStatus(value);
+    console.log(skillFixed);
+    setSkill(skillFixed);
     setWorks({
       works: value,
       statusPoint
     });
-    setSkill(skillFixed);
   };
 
   const onChangeStatusPoint = (

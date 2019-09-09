@@ -15,3 +15,8 @@ export interface RowInterface {
   toRow: number;
   updated: { level: number };
 }
+
+export interface skillFixedInterface {
+  name: string;
+  value: number;
+}

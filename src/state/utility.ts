@@ -1,8 +1,9 @@
 import { syndromeKind, worksKind, urgeKind, awakenKind } from "./variables";
+import { skillFixedInterface } from "../interface";
 
 interface worksStatusInterface {
   statusPoint: number[];
-  skillFixed: object[];
+  skillFixed: skillFixedInterface[];
 }
 
 const syndromeStatus = (syndrome: string): number[] => {
@@ -91,34 +92,42 @@ const worksStatus = (works: string): worksStatusInterface => {
       return {
         statusPoint: [0, 1, 0, 0],
         skillFixed: [
-          { perception: 2 },
-          { will: 1 },
-          { rc: 1 },
-          { infoRumor: 1 }
+          { name: "知覚", value: 2 },
+          { name: "意志", value: 1 },
+          { name: "RC", value: 1 },
+          { name: "情報:噂話", value: 1 }
         ]
       };
     case worksKind[2]:
       return {
         statusPoint: [0, 1, 0, 0],
         skillFixed: [
-          { perception: 1 },
-          { will: 1 },
-          { rc: 2 },
-          { infoRumor: 1 }
+          { name: "知覚", value: 1 },
+          { name: "意志", value: 1 },
+          { name: "RC", value: 2 },
+          { name: "情報:噂話", value: 1 }
         ]
       };
     case worksKind[3]:
       return {
         statusPoint: [1, 0, 0, 0],
         skillFixed: [
-          { dodge: 1 },
-          { perception: 1 },
-          { rc: 2 },
-          { infoRumor: 1 }
+          { name: "回避", value: 1 },
+          { name: "知覚", value: 1 },
+          { name: "RC", value: 2 },
+          { name: "情報:噂話", value: 1 }
         ]
       };
     default:
-      return { statusPoint: [0, 0, 0, 0], skillFixed: [{}] };
+      return {
+        statusPoint: [0, 0, 0, 0],
+        skillFixed: [
+          {
+            name: "",
+            value: 0
+          }
+        ]
+      };
   }
 };
 
