@@ -2,9 +2,9 @@ import React from "react";
 import { Section } from "../style";
 import Heading from "../atoms/Heading";
 import TextArea from "../atoms/TextArea";
-import Profile from "../state/container/ProfileContainer";
+import Profile from "../state/container/profile";
 
-const Area: React.FC = () => {
+const ProfileArea: React.FC = () => {
   const profile = Profile.useContainer();
   const { onChangeProfile } = profile;
   const height = 100;
@@ -19,14 +19,6 @@ const Area: React.FC = () => {
         }}
       />
     </Section>
-  );
-};
-
-const ProfileArea: React.FC = () => {
-  return (
-    <Profile.Provider>
-      <Area />
-    </Profile.Provider>
   );
 };
 

@@ -1,26 +1,22 @@
 import React from "react";
-import { Section, Table } from "../style";
+import { Section } from "../style";
 import Heading from "../atoms/Heading";
-import Status from "../state/container/StatusContainer";
+import Status from "../state/container/status";
 import SkillRow from "../molecules/SkillRow";
 
-const STable: React.FC = () => {
+const SkillTable: React.FC = () => {
   const status = Status.useContainer();
   const { skill } = status;
 
   return (
     <Section>
       <Heading text={"スキル"} />
-      <SkillRow skill={skill} />
+      <SkillRow
+        skill={skill}
+        onChangeSelector={() => console.log("change")}
+        onChangeInput={() => console.log("changeInput")}
+      />
     </Section>
-  );
-};
-
-const SkillTable: React.FC = () => {
-  return (
-    <Status.Provider>
-      <STable />
-    </Status.Provider>
   );
 };
 

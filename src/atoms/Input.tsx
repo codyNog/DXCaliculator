@@ -4,9 +4,9 @@ import { placeholder } from "@babel/types";
 
 interface IPropsInput {
   type: string;
-  value: string;
+  value: string | number;
   style?: object;
-  placeholder: string;
+  placeholder: string | undefined;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -14,7 +14,8 @@ const Input: React.FC<IPropsInput> = props => {
   const { type, value, style, onChange, placeholder } = props;
   const InputStyle = css({
     ...{
-      width: 30
+      height: "100%",
+      width: 50
     },
     ...style
   });

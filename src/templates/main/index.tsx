@@ -3,15 +3,18 @@ import SkillDataGrid from "../../organisms/SkillDataGrid";
 import StatusTable from "../../organisms/StatusTable";
 import SkillTable from "../../organisms/SkillTable";
 import ProfileArea from "../../organisms/ProfileArea";
+import Providers from "../../state/Providers";
+import Header from "../../organisms/header";
 
 const MainIndex: React.FC = () => {
   return (
-    <div>
+    <Providers>
+      <Header />
       <StatusTable />
       <SkillDataGrid />
       <SkillTable />
       <ProfileArea />
-    </div>
+    </Providers>
   );
 };
 

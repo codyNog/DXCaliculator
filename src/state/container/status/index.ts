@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { createContainer } from "unstated-next";
-import { syndromeKind, syndromeColumn, worksColumn } from "../variables";
+import { syndromeKind, syndromeColumn, worksColumn } from "../../variables";
 import {
   worksStatus,
   syndromeStatus,
   awakenErosion,
   urgeErosion
-} from "../utility";
+} from "../../utility";
 
 const useStatus = () => {
   const [syndromeOne, setSyndromeOne] = useState(syndromeColumn);
@@ -19,7 +19,7 @@ const useStatus = () => {
   const [growth, setGrowth] = useState([0, 0, 0, 0]);
   const [others, setOthers] = useState([0, 0, 0, 0]);
   const [statusExp, setExp] = useState(0);
-  const [skill, setSkill] = useState([{ name: "", value: 0 }]);
+  const [skill, setSkill] = useState([{ name: "あ", value: 0 }]);
 
   const onChangeSyndromeOne = (value: string) => {
     const statusPoint = syndromeStatus(value);

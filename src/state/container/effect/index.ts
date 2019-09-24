@@ -1,9 +1,9 @@
-import { SkillObject, RowInterface } from "../../interface";
+import { SkillObject, RowInterface } from "../../../interface";
 import ReactDataGrid from "react-data-grid";
 import { useState } from "react";
 import { createContainer } from "unstated-next";
 
-const initialSkillData = [
+const initialEffectData = [
   {
     check: "none",
     name: "ワーディング",
@@ -43,7 +43,7 @@ const addSkill = (i: number): SkillObject => {
 };
 
 const useSkill = () => {
-  const [effectData, setSkillData] = useState(initialSkillData);
+  const [effectData, setSkillData] = useState(initialEffectData);
   const addEffectRow = () => {
     const key = effectData.length;
     const add = addSkill(key);

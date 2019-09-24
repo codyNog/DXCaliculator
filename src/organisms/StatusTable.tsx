@@ -5,9 +5,9 @@ import SyndromeSelector from "../molecules/table/SyndromeSelector";
 import Heading from "../atoms/Heading";
 import StatusPoints from "../molecules/table/StatusPoints";
 import OptionalSelector from "../molecules/table/OptionalSelector";
-import Status from "../state/container/StatusContainer";
+import Status from "../state/container/status";
 import TotalRow from "../molecules/table/TotalRow";
-import { marginM, marginL } from "../style/variables";
+import { marginL } from "../style/variables";
 import StatusController from "../molecules/table/StatusController";
 import AbilityValue from "../molecules/table/AbilityValue";
 import {
@@ -19,7 +19,7 @@ import {
   awakenKind
 } from "../state/variables";
 
-const STable: React.FC = () => {
+const StatusTable: React.FC = () => {
   const status = Status.useContainer();
   const {
     syndromeOne,
@@ -138,14 +138,6 @@ const STable: React.FC = () => {
       </Table>
       <StatusController exp={statusExp} />
     </Section>
-  );
-};
-
-const StatusTable: React.FC = () => {
-  return (
-    <Status.Provider>
-      <STable />
-    </Status.Provider>
   );
 };
 

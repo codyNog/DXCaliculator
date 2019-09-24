@@ -1,5 +1,5 @@
 import React from "react";
-import Routing from "./route/Routing";
+import Routing from "./route";
 
 const App: React.FC = () => {
   return <Routing />;

@@ -4,9 +4,9 @@ import { Section } from "../style";
 import DataGrid from "../molecules/DataGrid";
 import { marginM } from "../style/variables";
 import Heading from "../atoms/Heading";
-import Effect from "../state/container/EffectContainer";
+import Effect from "../state/container/effect";
 
-const Grid = () => {
+const SkillDataGrid: React.FC = () => {
   const skill = Effect.useContainer();
   const {
     effectData,
@@ -36,14 +36,6 @@ const Grid = () => {
         skillExp={skillExp}
       />
     </Section>
-  );
-};
-
-const SkillDataGrid: React.FC = () => {
-  return (
-    <Effect.Provider>
-      <Grid />
-    </Effect.Provider>
   );
 };
 

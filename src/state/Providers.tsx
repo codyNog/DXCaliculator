@@ -1,7 +1,7 @@
 import React from "react";
-import Effect from "./container/EffectContainer";
-import Status from "./container/StatusContainer";
-import Profile from "./container/ProfileContainer";
+import Effect from "./container/effect";
+import Status from "./container/status";
+import Profile from "./container/profile";
 
 const Providers: React.FC = props => {
   const { children } = props;
