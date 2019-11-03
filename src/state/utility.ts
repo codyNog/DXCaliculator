@@ -118,6 +118,17 @@ const worksStatus = (works: string): worksStatusInterface => {
           { name: "情報:噂話", value: 1 }
         ]
       };
+    case worksKind[4]:
+      return {
+        statusPoint: [1, 0, 0, 0],
+        skillFixed: [
+          { name: "白兵", value: 1 },
+          { name: "運転:", value: 2 },
+          { name: "知覚", value: 1 },
+          { name: "意志", value: 1 },
+          { name: "情報:裏社会", value: 1 }
+        ]
+      };
     default:
       return {
         statusPoint: [0, 0, 0, 0],

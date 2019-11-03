@@ -1,8 +1,8 @@
 import React from "react";
-import { Section } from "../style";
+import { Section } from "../../style";
 import Heading from "../atoms/Heading";
 import TextArea from "../atoms/TextArea";
-import Profile from "../state/container/profile";
+import Profile from "../../state/container/profile";
 
 const ProfileArea: React.FC = () => {
   const profile = Profile.useContainer();

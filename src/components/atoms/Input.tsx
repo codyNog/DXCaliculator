@@ -1,11 +1,10 @@
 import React from "react";
 import { css } from "emotion";
-import { placeholder } from "@babel/types";
 
 interface IPropsInput {
   type: string;
   value: string | number;
-  style?: object;
+  style?: React.CSSProperties;
   placeholder: string | undefined;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }

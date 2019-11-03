@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDataGrid from "react-data-grid";
-import { SkillObject, RowInterface } from "../interface";
+import { SkillObject, RowInterface } from "../../interface";
 
 interface IPropsDataGrid {
   rowKey: string;

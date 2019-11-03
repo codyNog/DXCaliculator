@@ -1,6 +1,6 @@
 import React from "react";
 import { css } from "emotion";
-import Button from "../../atoms/Button";
+import { Link } from "react-router-dom";
 
 const HeaderStyle = css({
   height: 50,
@@ -11,18 +11,22 @@ const HeaderStyle = css({
   justifyContent: "center"
 });
 
+const HeaderLinkStyle = css({
+  width: 100,
+  borderWidth: 0.5,
+  borderColor: "black",
+  color: "white",
+  position: "absolute",
+  right: 20
+});
+
 const Header: React.FC = () => {
   return (
     <div className={HeaderStyle}>
       <div>header</div>
-      <Button
-        text={"保存する"}
-        onClick={() => console.log("click")}
-        style={{
-          position: "absolute",
-          right: 20
-        }}
-      />
+      <Link to="/pdf" className={HeaderLinkStyle}>
+        保存する
+      </Link>
     </div>
   );
 };

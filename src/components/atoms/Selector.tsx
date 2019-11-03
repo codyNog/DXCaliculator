@@ -1,10 +1,10 @@
 import React from "react";
 import { css } from "emotion";
-import { h3 } from "../style/variables";
+import { h3 } from "../../style/variables";
 
 interface IPropsSelector {
   options: string[];
-  style?: object;
+  style?: React.CSSProperties;
   width?: number;
   value: number | string;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;

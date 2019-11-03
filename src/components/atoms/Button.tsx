@@ -2,18 +2,20 @@ import React from "react";
 import { css } from "emotion";
 
 interface IPropsButtonType {
-  text: string;
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  style?: object;
+  style?: React.CSSProperties;
 }
 
 const Button: React.FC<IPropsButtonType> = props => {
-  const { text, onClick, style } = props;
-  const ButtonStyle = css({ ...{}, ...style });
+  const { children, onClick, style } = props;
+  const ButtonStyle = css({
+    ...{ height: 30, width: 80, fontSize: 12 },
+    ...style
+  });
 
   return (
     <button type={"button"} className={ButtonStyle} onClick={onClick}>
-      {text}
+      {children}
     </button>
   );
 };

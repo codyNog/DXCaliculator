@@ -1,13 +1,13 @@
 import React from "react";
-import { Section, Table } from "../style";
+import { Section, Table } from "../../style";
 import TableRow from "../atoms/table/TableRow";
 import SyndromeSelector from "../molecules/table/SyndromeSelector";
 import Heading from "../atoms/Heading";
 import StatusPoints from "../molecules/table/StatusPoints";
 import OptionalSelector from "../molecules/table/OptionalSelector";
-import Status from "../state/container/status";
+import Status from "../../state/container/status";
 import TotalRow from "../molecules/table/TotalRow";
-import { marginL } from "../style/variables";
+import { marginL } from "../../style/variables";
 import StatusController from "../molecules/table/StatusController";
 import AbilityValue from "../molecules/table/AbilityValue";
 import {
@@ -17,7 +17,7 @@ import {
   ability,
   urgeKind,
   awakenKind
-} from "../state/variables";
+} from "../../state/variables";
 
 const StatusTable: React.FC = () => {
   const status = Status.useContainer();

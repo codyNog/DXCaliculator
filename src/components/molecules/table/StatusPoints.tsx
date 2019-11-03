@@ -1,6 +1,6 @@
 import React from "react";
 import Selector from "../../atoms/Selector";
-import Status from "../../state/container/status";
+import Status from "../../../state/container/status";
 
 interface IPropsSPoints {
   role: string;

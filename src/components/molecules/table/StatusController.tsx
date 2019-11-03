@@ -1,7 +1,7 @@
 import React from "react";
 import { css } from "emotion";
 import ExpCounter from "../../atoms/ExpCounter";
-import { marginM } from "../../style/variables";
+import { marginM } from "../../../style/variables";
 
 interface IPropsSkillController {
   exp: number;

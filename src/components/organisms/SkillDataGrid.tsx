@@ -1,10 +1,10 @@
 import React from "react";
 import SkillController from "../molecules/SkillController";
-import { Section } from "../style";
+import { Section } from "../../style";
 import DataGrid from "../molecules/DataGrid";
-import { marginM } from "../style/variables";
+import { marginM } from "../../style/variables";
 import Heading from "../atoms/Heading";
-import Effect from "../state/container/effect";
+import Effect from "../../state/container/effect";
 
 const SkillDataGrid: React.FC = () => {
   const skill = Effect.useContainer();

@@ -1,8 +1,8 @@
 import React from "react";
-import { h3, marginXS } from "../style/variables";
+import { h3, marginXS } from "../../style/variables";
 
 interface IPropsTextArea {
-  style: object;
+  style: React.CSSProperties;
   onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 

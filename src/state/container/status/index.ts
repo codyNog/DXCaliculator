@@ -19,7 +19,7 @@ const useStatus = () => {
   const [growth, setGrowth] = useState([0, 0, 0, 0]);
   const [others, setOthers] = useState([0, 0, 0, 0]);
   const [statusExp, setExp] = useState(0);
-  const [skill, setSkill] = useState([{ name: "あ", value: 0 }]);
+  const [skill, setSkill] = useState([{ name: "", value: 0 }]);
 
   const onChangeSyndromeOne = (value: string) => {
     const statusPoint = syndromeStatus(value);
@@ -112,6 +112,40 @@ const useStatus = () => {
     }
   };
 
+  const onChangeSkillName = (name: string, key: number) => {
+    const update = skill.slice();
+    update[key].name = name;
+    setSkill(update);
+  };
+
+  const onChangeSkillValue = (value: number, key: number) => {
+    const update = skill.slice();
+    update[key].value = value;
+    setSkill(update);
+  };
+
+  const addSkillRow = () => {
+    const addSkill = { name: "", value: 0 };
+    setSkill(skill.concat(addSkill));
+  };
+
+  const removeSkillRow = () => {
+    if (skill.length > 4) {
+      const update = skill.slice(0, -1);
+      setSkill(update);
+    }
+  };
+
+  const skillExp = () => {
+    let skillSum = 0;
+    skill.forEach(skill => {
+      skillSum += skill.value;
+    });
+    skillSum -= 5;
+    skillSum = skillSum < 0 ? 0 : skillSum;
+    return skillSum;
+  };
+
   const totalCalc = (i: number) => {
     const result =
       syndromeOne.statusPoint[i] +
@@ -151,7 +185,13 @@ const useStatus = () => {
     statusPointsClassify,
     total,
     abilityValue,
-    statusExp
+    statusExp,
+    setSkill,
+    addSkillRow,
+    removeSkillRow,
+    onChangeSkillName,
+    onChangeSkillValue,
+    skillExp
   };
 };
 

@@ -3,7 +3,7 @@ import { css } from "emotion";
 import { marginM } from "./variables";
 
 interface IPropsStyle {
-  style?: object;
+  style?: React.CSSProperties;
 }
 
 const Page: React.FC = props => {

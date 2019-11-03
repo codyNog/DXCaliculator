@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../atoms/Button";
 import { css } from "emotion";
 import ExpCounter from "../atoms/ExpCounter";
-import { marginM } from "../style/variables";
+import { marginM } from "../../style/variables";
 
 interface IPropsSkillController {
   add: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -14,17 +14,20 @@ interface IPropsSkillController {
 const SkillController: React.FC<IPropsSkillController> = props => {
   const { add, remove, skillExp, marginBottom } = props;
   const ControllerStyle = css({
+    height: 40,
     position: "relative",
     display: "flex",
     marginBottom: marginBottom
   });
-  const ButtonStyle = {
-    height: 20
-  };
+  const ButtonStyle = {};
   return (
     <div className={ControllerStyle}>
-      <Button text={"+増やす"} onClick={add} style={ButtonStyle} />
-      <Button text={"-減らす"} onClick={remove} style={ButtonStyle} />
+      <Button onClick={add} style={ButtonStyle}>
+        +追加する
+      </Button>
+      <Button onClick={remove} style={ButtonStyle}>
+        -削除する
+      </Button>
       <ExpCounter
         style={{ right: marginM, position: "absolute" }}
         exp={skillExp}

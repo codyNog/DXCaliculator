@@ -88,6 +88,8 @@ const worksColumn = {
   statusPoint: [0, 0, 0, 0]
 };
 
+const skillOptions = ["", "白兵", "射撃", "RC", "交渉"];
+
 export {
   rows,
   syndromeKind,
@@ -96,5 +98,6 @@ export {
   urgeKind,
   ability,
   syndromeColumn,
-  worksColumn
+  worksColumn,
+  skillOptions
 };

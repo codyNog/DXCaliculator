@@ -1,10 +1,10 @@
 import React from "react";
 import { css } from "emotion";
-import { h2 } from "../style/variables";
+import { h2 } from "../../style/variables";
 
 interface IPropsHeading {
   text: string;
-  style?: object;
+  style?: React.CSSProperties;
 }
 
 const Heading: React.FC<IPropsHeading> = props => {
